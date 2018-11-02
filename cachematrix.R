@@ -1,6 +1,9 @@
 ##Simulation bernoulli and pareto distributions
 
 ## Simulation pareto distributions by uniform distributions
+## Donde a, b son los parámetros de mi distribución pareto 
+## u guarda a una distribucion uniforme (N)
+## finalmente obtenemos la distribución pareto con los párametros que ingresamos
 
 makeCacheMatrix <- function(a,b,N){
   u <- runif(N)	
@@ -12,6 +15,9 @@ makeCacheMatrix <- function(a,b,N){
 
 
 ## Simulation bernoulli distributions with a for loop 
+## El contador guardará en x[i] los éxitos y fracasos que 
+## se obtengan de acuerdo a los párametros establecidos
+## para nuestra distribución Bernoulli.
 
 cacheSolve <- function(p,N){
   x <- rep(NA,N)
