@@ -1,15 +1,25 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Simulations of pareto and bernoulli distributions 
 
-## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix()) {
+## Simulate pareto distribution by some uniforms distributions
+
+simpar <- function(a,b,N) {
+        u <- runif(N)
+        pareto <- b/(u^(1/a))
+        return(pareto)
 
 }
 
 
-## Write a short comment describing this function
+## Simulate bernoulli distribution
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+simber <- function(p,N) {
+        x <- rep(NA, N)
+        for(i in 1:N) {
+                v <- runif(1)
+                if(v<p) {
+                        x[i] <- 1 }
+                else {
+                        x[i] <- 0}
+                return(x)
 }
