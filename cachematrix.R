@@ -1,31 +1,35 @@
-##Simulation bernoulli and pareto distributions
+##INVERSE OF A MATRIX
 
-## Simulation pareto distributions by uniform distributions
-## Donde a, b son los parámetros de mi distribución pareto 
-## u guarda a una distribucion uniforme (N)
-## finalmente obtenemos la distribución pareto con los párametros que ingresamos
+## The function can cache the inverse of a matrix
 
-makeCacheMatrix <- function(a,b,N){
-  u <- runif(N)	
-  pareto <- b/(u^(1/a))
-  return(pareto)
+
+makeCacheMatrix <- function(w=matrix()) {
+  u <- NULL
+  set <- function(v) { 
+            w <<- v
+            u <<- NULL 
+}
+  
+  get <- function() w
+  setInverse <- function(solveMatrix)
+                 u <<- solveMatrix
+  getInverse <- function() v
+  list(set = set, get= get, setInverse=setInverse, getInverse= getInverse)
+
 }
 
-}
 
+## The function calculates the inverse of the special "matrix"
+## Suppose that the matrix is invertible, that is, it is a matrix of size nxn
 
-## Simulation bernoulli distributions with a for loop 
-## El contador guardará en x[i] los éxitos y fracasos que 
-## se obtengan de acuerdo a los párametros establecidos
-## para nuestra distribución Bernoulli.
-
-cacheSolve <- function(p,N){
-  x <- rep(NA,N)
-  for(i in 1:N){
-    u <- runif(1)
-    if(u < p){x[i] <- 1}
-    else{x[i] <- 0}
+cacheSolve <- function(u,...){
+  u <- u$getInverse()
+  if(!is.null(u) {
+       return(u)
   }
-  return(x)
+  v <- x$get()
+  u <- solve(v)
+  u$setInverse(u)
+   u
         
 }
